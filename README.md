@@ -38,5 +38,11 @@ set httpd port 2812 and
   % sudo docker run -d -t -p 12812:2812 -p 9000:9000-p 10022:22 centos-play /usr/bin/monit -I
  9c796ab91f7d79259811b0343978ef1354a57b38e43a64d8bb83b4148aad28a0
   % play run
+  % type scala
+  scala is /home/play/scala-2.11.0/bin/scala
+  % type play
+  play is /usr/local/bin/play
+  % type java
+  java is /usr/bin/java
   % curl http://localhost:9000/
 ```
