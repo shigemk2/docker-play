@@ -1,8 +1,8 @@
-FROM centos
+FROM centos:centos6
 MAINTAINER shigemk2
 
-ENV IP __IP__
-ENV PW __PASSWORD__
+ENV IP 127.0.0.1
+ENV PW shige
 
 RUN useradd play && echo "play:$PW" | chpasswd
 
@@ -16,12 +16,10 @@ RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm ;\
 RUN yum --enablerepo=remi,epel install sudo openssh-server syslog monit java-1.7.0-openjdk java-1.7.0-openjdk-devel git -y
 
 # play
-ENV PLAY_VERSION 2.2.1
-RUN wget http://downloads.typesafe.com/play/$PLAY_VERSION/play-$PLAY_VERSION.zip 
+# ENV PLAY_VERSION 2.3.6
+RUN wget http://downloads.typesafe.com/typesafe-activator/1.2.10/typesafe-activator-1.2.10-minimal.zip
 
-RUN unzip play-$PLAY_VERSION.zip -d /usr/local
-RUN chown -R play.play /usr/local/play-$PLAY_VERSION 
-RUN cd /usr/local/bin/ && ln -s /usr/local/play-$PLAY_VERSION/play
+RUN unzip typesafe-activator-1.2.10-minimal.zip -d /usr/local
 
 # play port
 EXPOSE 9000 
